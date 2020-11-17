@@ -15,6 +15,13 @@ from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import generics
 
+
+
+
+
+"""
+This class define user registration.
+"""
 class CreateUserAPIView(APIView):
 	permission_classes = (AllowAny,)
  
