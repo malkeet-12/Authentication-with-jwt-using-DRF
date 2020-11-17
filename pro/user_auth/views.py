@@ -56,12 +56,46 @@ class authenticate_user(APIView):
 
 
 
-class LogoutAllView(APIView):
-    permission_classes = (IsAuthenticated,)
 
-    def post(self, request):
-        tokens = OutstandingToken.objects.filter(user_id=request.user.id)
-        for token in tokens:
-            t, _ = BlacklistedToken.objects.get_or_create(token=token)
-
-        return Response(status=status.HTTP_205_RESET_CONTENT)
+# from django.utils import timezone
+# from datetime import timedelta
+# from datetime import datetime
+# import pytz
+# from pytz import utc
+# class LoginView(APIView):
+# 	def post(self,request):
+# 		context = {}
+# 		try:
+# 			phone_number = request.data.get('phone_number')
+# 			password = request.data.get('password')
+# 			user = authenticate(phone_number=phone_number,password=password)
+# 			if user:
+# 				token,create = Token.objects.get_or_create(user=user)
+			
+# 				utc_now = datetime.utcnow()
+# 				utc_now = utc_now.replace(tzinfo=pytz.utc)
+# 				if token.created < utc_now - timedelta(seconds=10):
+# 					token.delete()
+# 					context['message'] = 'Invalid Token'
+# 					return 	Response(context)
+# 				else:
+# 					token.create = datetime.utcnow()
+# 					token.save()
+# 				context['sucess'] = True
+# 				if user.is_superuser or user.is_staff:
+# 					context['is_superuser']= True
+# 				else:
+# 					context['is_superuser']= False
+# 				context['message'] = 'User Login Successfully'
+# 				context['data'] = { 'token': token.key }
+# 				# context['user'] = {'username': username}
+# 				login(request, user)
+# 				return Response(context)
+# 			else:
+# 				context['success'] = False
+# 				context['message'] = 'Invalid username or password'
+# 				return Response(context)
+# 		except Exception as e:
+# 			context['success'] = False
+# 			context['message'] = str(e)
+# 			return Response(context)

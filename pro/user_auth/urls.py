@@ -7,4 +7,5 @@ from .import views
 urlpatterns = [
     path('create/', CreateUserAPIView.as_view()),
     path('login/',views.authenticate_user.as_view()),
+	# path('user-login/',LoginView.as_view()) 
 ]
