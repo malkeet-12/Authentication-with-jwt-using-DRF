@@ -79,7 +79,7 @@ class authenticate_user(APIView):
 # 					context['message'] = 'Invalid Token'
 # 					return 	Response(context)
 # 				else:
-# 					token.create = datetime.utcnow()
+# 					token.created = datetime.utcnow()
 # 					token.save()
 # 				context['sucess'] = True
 # 				if user.is_superuser or user.is_staff:
